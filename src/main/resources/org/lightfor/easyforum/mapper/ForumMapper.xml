@@ -12,10 +12,25 @@
         id, name, parent_id
     </sql>
 
-    <select id="selectByParentId" resultMap="forum" parameterType="long">
+    <select id="listByParentId" resultMap="forum">
         select
         <include refid="Base_Column_List"/>
         from forum
         where parent_id = #{id,jdbcType=NUMERIC}
     </select>
+
+    <insert id="save">
+        insert into forum (name, parent_id) VALUES (#{id,jdbcType=VARCHAR}, #{parentId, jdbcType=NUMERIC})
+    </insert>
+
+    <select id="get" resultMap="forum">
+        select
+        <include refid="Base_Column_List"/>
+        from forum
+        where id = #{id,jdbcType=NUMERIC}
+    </select>
+
+    <delete id="delete">
+        delete from forum where id = #{id,jdbcType=NUMERIC}
+    </delete>
 </mapper>

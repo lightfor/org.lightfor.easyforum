@@ -35,6 +35,11 @@
     </properties>
 
     <dependencies>
+        <dependency>
+            <groupId>org.lightfor</groupId>
+            <artifactId>util</artifactId>
+            <version>${project.version}</version>
+        </dependency>
         <!-- core start !-->
         <dependency>
             <groupId>org.slf4j</groupId>

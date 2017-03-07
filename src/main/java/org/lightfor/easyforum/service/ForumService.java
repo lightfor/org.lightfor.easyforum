@@ -9,5 +9,11 @@ import java.util.List;
  * Created by Light on 2017/1/13.
  */
 public interface ForumService {
-    List<Forum> findForumByParentId(long parentId);
+    List<Forum> listForumByParentId(long parentId);
+
+    void save(Forum forum);
+
+    Forum get(long id);
+
+    void remove(long forum);
 }

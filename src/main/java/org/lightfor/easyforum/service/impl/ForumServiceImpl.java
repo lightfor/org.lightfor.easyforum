@@ -18,7 +18,19 @@ public class ForumServiceImpl implements ForumService{
     @Autowired
     private ForumMapper forumMapper;
 
-    public List<Forum> findForumByParentId(long parentId) {
-        return forumMapper.selectByParentId(parentId);
+    public List<Forum> listForumByParentId(long parentId) {
+        return forumMapper.listByParentId(parentId);
+    }
+
+    public void save(Forum forum) {
+        forumMapper.save(forum);
+    }
+
+    public Forum get(long id) {
+        return forumMapper.get(id);
+    }
+
+    public void remove(long id) {
+        forumMapper.remove(id);
     }
 }
