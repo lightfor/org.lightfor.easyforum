@@ -20,7 +20,7 @@
     </select>
 
     <insert id="save">
-        insert into forum (name, parent_id) VALUES (#{id,jdbcType=VARCHAR}, #{parentId, jdbcType=NUMERIC})
+        insert into forum (name, parent_id) VALUES (#{name,jdbcType=VARCHAR}, #{parentId, jdbcType=NUMERIC})
     </insert>
 
     <select id="get" resultMap="forum">

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.lightfor.easyforum.mapper.TopicMapper">
+
+    <resultMap id="topic" type="org.lightfor.easyforum.pojo.Topic">
+        <id column="id" property="id" jdbcType="NUMERIC"/>
+        <result column="title" property="title" jdbcType="VARCHAR"/>
+        <result column="content" property="content" jdbcType="VARCHAR"/>
+        <result column="forum_id" property="forumId" jdbcType="NUMERIC"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id, title, content, forum_id
+    </sql>
+
+    <select id="listByForumId" resultMap="topic">
+        select
+        <include refid="Base_Column_List"/>
+        from topic
+        where forum_id = #{forumId,jdbcType=NUMERIC}
+    </select>
+
+    <insert id="save">
+        insert into topic (title, content, forum_id) VALUES (#{title,jdbcType=VARCHAR}, #{content,jdbcType=VARCHAR}, #{forumId, jdbcType=NUMERIC})
+    </insert>
+
+    <select id="get" resultMap="topic">
+        select
+        <include refid="Base_Column_List"/>
+        from topic
+        where id = #{id,jdbcType=NUMERIC}
+    </select>
+
+    <delete id="delete">
+        delete from topic where id = #{id,jdbcType=NUMERIC}
+    </delete>
+</mapper>
